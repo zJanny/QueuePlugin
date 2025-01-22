@@ -1,0 +1,4 @@
+name: QueuePlugin
+version: '1.0-SNAPSHOT'
+main: at.zjanny.queueplugin.QueuePlugin
+api-version: '1.21'

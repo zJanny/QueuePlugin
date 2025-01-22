@@ -1,0 +1,5 @@
+queue:
+  target-server: "name"
+  target-server-ip: "localhost"
+  target-server-port: 25565
+  target-server-max-players: 20
