@@ -64,6 +64,7 @@ public class PlayerQueue {
             public void run() {
                 int place = 0;
                 for(Player player : playerQueue){
+                    if(!playerQueue.contains(player)) continue;
                     player.sendMessage("§cSERVER FULL");
                     player.sendMessage("§aPlace in queue §6" + place);
 
