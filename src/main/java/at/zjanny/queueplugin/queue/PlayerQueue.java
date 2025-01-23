@@ -58,7 +58,7 @@ public class PlayerQueue {
         });
     }
 
-    private void informPlayers(boolean serverDown){
+    private void updatePlayers(){
         Bukkit.getScheduler().runTask(QueuePlugin.getPlugin(), new Runnable() {
             @Override
             public void run() {
@@ -66,8 +66,20 @@ public class PlayerQueue {
                 for(Player player : playerQueue){
                     player.sendMessage("§cSERVER FULL");
                     player.sendMessage("§aPlace in queue §6" + place);
-                    if(serverDown)
-                        player.sendMessage("§cMain server is down");
+
+                    place++;
+                }
+            }
+        });
+    }
+
+    private void serverDownMessage(){
+        Bukkit.getScheduler().runTask(QueuePlugin.getPlugin(), new Runnable() {
+            @Override
+            public void run() {
+                int place = 0;
+                for(Player player : playerQueue){
+                    player.sendMessage("§cMain server is down");
 
                     place++;
                 }
@@ -80,10 +92,13 @@ public class PlayerQueue {
             @Override
             public void run() {
                 int openSlots = serverStatus.getOpenSlots();
-                informPlayers(openSlots == -1);
-                if(openSlots == -1) return;
+                if(openSlots == -1) {
+                    serverDownMessage();
+                    return;
+                }
 
                 sendPlayersToServer(openSlots);
+                updatePlayers();
             }
 
         }, 0, 20 * 5);
