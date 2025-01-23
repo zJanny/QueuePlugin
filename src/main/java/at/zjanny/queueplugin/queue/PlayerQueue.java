@@ -64,7 +64,8 @@ public class PlayerQueue {
             public void run() {
                 int place = 0;
                 for(Player player : playerQueue){
-                    player.sendMessage("§aYou are currently in place §6" + place);
+                    player.sendMessage("§cSERVER FULL");
+                    player.sendMessage("§aPlace in queue §6" + place);
                     if(serverDown)
                         player.sendMessage("§cMain server is down");
 

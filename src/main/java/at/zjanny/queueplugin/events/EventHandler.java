@@ -34,6 +34,8 @@ public class EventHandler implements Listener {
             }
         }
 
+
+        event.getPlayer().sendMessage("§aPlease wait while we connect you to the server");
         event.joinMessage(null);
     }
 
