@@ -3,10 +3,12 @@ package at.zjanny.queueplugin.events;
 import at.zjanny.queueplugin.QueuePlugin;
 import at.zjanny.queueplugin.config.configs.QueueLocationConfig;
 import at.zjanny.queueplugin.queue.PlayerQueue;
+import io.papermc.paper.event.player.AsyncChatEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -56,5 +58,10 @@ public class EventHandler implements Listener {
         if(!event.getPlayer().isOp()){
             event.setCancelled(true);
         }
+    }
+
+    @org.bukkit.event.EventHandler
+    public void onPlayerChat(AsyncChatEvent event){
+        event.setCancelled(true);
     }
 }
